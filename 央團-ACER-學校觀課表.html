@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACER 入校觀課・議課單</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#faf8f4;
+  --color-text:#201f1d;
+  --color-accent:#b68235;
+  --color-accent-100:#f6ecdb;
+  --color-accent-600:#a0722c;
+  --color-accent-700:#87611f;
+  --color-neutral-200:#e6e1d8;
+  --color-neutral-300:#d3cdc2;
+  --color-neutral-400:#aaa49a;
+  --color-neutral-600:#6f695f;
+  --color-neutral-700:#544f47;
+  --color-divider:#ded8cd;
+  --font-display:'Cormorant Garamond','Noto Serif TC',serif;
+}
+*{box-sizing:border-box}
+h1,h3,h4,.tb-label,.btn,.strand,.tag,.core b,.lvrow .t,.cmp .h,.sec .num,.sec h2,table.grid th{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
+body{margin:0;background:var(--color-bg)}
+#root{font-family:'Lora','Noto Serif TC',serif;color:var(--color-text);font-size:14px;line-height:1.7;max-width:1000px;margin:0 auto;padding:28px 20px 80px}
+a{color:var(--color-accent-700)}
+a:hover{color:var(--color-accent-600)}
+
+/* toolbar */
+#toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--color-text);padding-bottom:10px}
+.tb-label{font-family:var(--font-display);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-700)}
+.tb-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#saveStatus{font-size:11px;color:var(--color-neutral-600);min-width:8em;display:inline-block}
+.btn{font-family:var(--font-display);font-size:12px;padding:6px 12px;border:1px solid var(--color-neutral-400);border-radius:4px;background:transparent;color:var(--color-neutral-700);cursor:pointer}
+.btn.primary{border-color:var(--color-accent);color:var(--color-accent-700)}
+.btn.ghost{border-color:transparent;color:var(--color-neutral-600)}
+.btn:hover{border-color:var(--color-accent);background:var(--color-accent-100)}
+
+h1{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4vw,36px);line-height:1.25;margin:22px 0 6px}
+.lead{margin:0 0 6px;color:var(--color-neutral-700);max-width:46em;text-wrap:pretty}
+.note{margin:0 0 8px;font-size:11.5px;color:var(--color-neutral-600)}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 18px}
+.flow div{border:1px solid var(--color-divider);border-radius:4px;padding:8px 12px;font-size:12px;color:var(--color-neutral-700);background:#fff8}
+.flow b{display:block;font-family:var(--font-display);font-size:15px;color:var(--color-accent-700);font-weight:600}
+
+/* section headings */
+.sec{display:flex;align-items:baseline;gap:14px;margin:38px 0 4px}
+.sec .num{font-family:var(--font-display);font-size:30px;line-height:1;color:var(--color-accent)}
+.sec h2{font-family:var(--font-display);font-weight:500;font-size:22px;margin:0}
+.sec .who{font-size:11.5px;color:var(--color-neutral-600);margin-left:auto}
+.rule{border-top:1px solid var(--color-text);margin-bottom:18px}
+h3{font-family:var(--font-display);font-weight:600;font-size:16px;margin:26px 0 3px}
+h4{font-family:var(--font-display);font-weight:600;font-size:14.5px;margin:0 0 4px}
+
+/* form controls */
+input[type=text],textarea,select{width:100%;border:1px solid var(--color-divider);border-radius:4px;background:transparent;font:inherit;color:inherit;padding:8px 10px}
+textarea{line-height:1.8;padding:12px 14px;resize:vertical;margin-bottom:14px;display:block}
+td input[type=text]{border:0;padding:4px 2px}
+select{width:auto;max-width:100%;padding:6px 8px}
+[data-k]::placeholder{color:var(--color-neutral-400);font-style:italic}
+[data-k]:focus-visible{outline:2px solid var(--color-accent);outline-offset:1px}
+label.chk{display:inline-flex;align-items:center;gap:6px;margin:2px 16px 2px 0;cursor:pointer}
+input[type=checkbox],input[type=radio]{accent-color:var(--color-accent)}
+.field-label{font-size:12px;color:var(--color-neutral-600);margin:0 0 3px}
+
+/* tables */
+.tw{overflow-x:auto;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table.info td{padding:8px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)}
+table.info td.k{width:16%;color:var(--color-neutral-600);font-size:12px}
+table.info td.v{width:34%;padding:4px 6px}
+table.grid{min-width:640px}
+table.grid th{font-family:var(--font-display);font-weight:600;font-size:12.5px;text-align:left;padding:8px 8px;border-bottom:1px solid var(--color-text);color:var(--color-neutral-700)}
+table.grid td{padding:8px;border-bottom:1px solid var(--color-divider);vertical-align:top}
+table.grid td.c{text-align:center;white-space:nowrap}
+table.grid textarea{margin:0;padding:6px 8px;min-height:2.6em}
+.sm{font-size:11.5px;color:var(--color-neutral-600)}
+
+/* indicator picker */
+.core{display:flex;gap:10px;align-items:flex-start;background:var(--color-accent-100);border-left:3px solid var(--color-accent);padding:9px 14px;margin:0 0 10px;font-size:13px}
+.core b{font-family:var(--font-display);font-size:14px;white-space:nowrap}
+.fw{margin:0 0 18px}
+.fw > h4{font-size:16px;margin-bottom:6px}
+.strand{font-family:var(--font-display);font-size:12px;letter-spacing:.08em;color:var(--color-accent-700);margin:10px 0 2px;border-bottom:1px solid var(--color-divider)}
+.pick{display:block;padding:6px 0;border-bottom:1px dotted var(--color-divider)}
+.pick label{display:flex;gap:8px;align-items:baseline;cursor:pointer}
+.pick .nm{font-weight:600;white-space:nowrap}
+.pick .gs{color:var(--color-neutral-700)}
+.pick.off{opacity:.45}
+.pick.off label{cursor:not-allowed}
+details.lv{margin:4px 0 2px 26px;font-size:12.5px}
+details.lv summary{cursor:pointer;color:var(--color-accent-700);font-size:11.5px}
+.lvrow{display:grid;grid-template-columns:4.2em 1fr;gap:8px;padding:5px 0;border-top:1px dotted var(--color-divider)}
+.lvrow .t{font-family:var(--font-display);font-weight:600;color:var(--color-neutral-700)}
+.lvrow.hit{background:var(--color-accent-100)}
+.counter{font-size:12px;color:var(--color-neutral-600);margin:4px 0 0}
+
+/* per-aspect cards */
+.card{border:1px solid var(--color-divider);border-radius:4px;padding:14px 16px 4px;margin:0 0 16px;background:#fffdf9}
+.card .hd{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;margin-bottom:6px}
+.tag{font-family:var(--font-display);font-size:11.5px;border:1px solid var(--color-accent);color:var(--color-accent-700);border-radius:10px;padding:0 8px}
+.empty{border:1px dashed var(--color-neutral-300);border-radius:4px;padding:14px;color:var(--color-neutral-600);font-size:12.5px;margin-bottom:16px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 12px}
+.cmp > div{border:1px solid var(--color-divider);border-radius:4px;padding:8px 12px;font-size:12.5px;background:#fff}
+.cmp .h{font-family:var(--font-display);font-weight:600;font-size:12px;color:var(--color-accent-700);margin-bottom:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hide{display:none !important}
+#savedNote{margin-top:40px;text-align:center;font-size:11px;color:var(--color-neutral-600)}
+
+@media (max-width:640px){
+  .flow,.two,.cmp{grid-template-columns:1fr}
+  .pick label{flex-wrap:wrap}
+}
+@media print{
+  body{background:#fff}
+  #toolbar,#savedNote{display:none !important}
+  #root{max-width:none;padding:0}
+  textarea,input,select{border-color:#bbb !important;color:#000 !important;overflow:hidden !important}
+  .card,.core{page-break-inside:avoid}
+  tr{page-break-inside:avoid}
+  .sec{page-break-after:avoid}
+}
+</style>
+</head>
+<body>
+<div id="root">
+
+  <div id="toolbar">
+    <span class="tb-label">Observation Sheet　線上填寫版</span>
+    <div class="tb-actions">
+      <span id="saveStatus"></span>
+      <button class="btn primary" onclick="onExport()">匯出備份</button>
+      <button class="btn" onclick="onImport()">匯入備份</button>
+      <button class="btn" onclick="onPrint()">列印／PDF</button>
+      <button class="btn ghost" onclick="onClear()">清空</button>
+    </div>
+  </div>
+
+  <h1>ACER 入校觀課・議課單</h1>
+  <p class="lead">這份表單把一次入校觀課串成三步：<strong>授課老師事前提供課程資料</strong>，觀課老師據此完成說課欄位，揭示課程設計與對應的指標細項；<strong>觀課老師針對這些細項定焦觀察</strong>，記錄具體證據；<strong>議課時用指標細項的層級描述</strong>，討論「這個地方還可以怎麼調整」。重點是用指標來<em>調整</em>課程，而不是事後貼標籤。</p>
+  <div class="flow">
+    <div><b>I　說課</b>觀課老師依授課老師事前提供的資料填寫：課程基本資料、對應指標、預計評量方式</div>
+    <div><b>II　觀課</b>觀課老師依說課揭示的細項，記錄課堂證據</div>
+    <div><b>III　議課</b>對照層級描述，共同討論調整方向與建議</div>
+  </div>
+  <p class="note">所填內容會自動儲存在你這台電腦的瀏覽器中（不會上傳）。若由多位觀課老師合作，可由一人先完成 I 說課，按「匯出備份」把檔案傳給其他觀課老師，對方按「匯入備份」即可接著填寫。換電腦或清理瀏覽器資料前，也請先匯出備份。</p>
+
+  <!-- ============ I 說課 ============ -->
+  <div class="sec"><span class="num">I</span><h2>說課：課程基本資料</h2><span class="who">觀課老師填寫，資料由授課老師事前提供</span></div>
+  <div class="rule"></div>
+
+  <div class="core"><b>授課老師需事前提供</b><span>學生背景描述、課程設計（學習目標、教學活動與流程、教學策略）、對應的指標細項、預計使用的評量方式。可用教案、學習單或訪談取得；觀課老師據此填寫本段，資料不清楚的地方，請於觀課前向授課老師確認。</span></div>
+  <p class="field-label">授課老師提供的資料來源</p>
+  <input type="text" data-k="srcInfo" placeholder="例：教案、學習單、說課訪談（日期）" style="margin-bottom:14px">
+
+  <div class="tw">
+  <table class="info"><tbody>
+    <tr><td class="k">學校名稱</td><td class="v"><input type="text" data-k="school"></td><td class="k">授課教師</td><td class="v"><input type="text" data-k="teacher"></td></tr>
+    <tr><td class="k">授課年級／班級</td><td class="v"><input type="text" data-k="grade"></td><td class="k">授課領域／科目</td><td class="v"><input type="text" data-k="subject"></td></tr>
+    <tr><td class="k">教學單元／主題</td><td class="v"><input type="text" data-k="unit"></td><td class="k">觀課日期／時間</td><td class="v"><input type="text" data-k="datetime" placeholder="例：2026/10/15 第三節"></td></tr>
+    <tr><td class="k">觀課教師</td><td class="v"><input type="text" data-k="observers"></td><td class="k">第幾次入校觀課</td><td class="v"><input type="text" data-k="visitNo" placeholder="第 ＿ 次"></td></tr>
+  </tbody></table>
+  </div>
+
+  <p class="field-label">本次觀課關注面向</p>
+  <label class="chk"><input type="checkbox" data-k="focus_teach"> 教學</label>
+  <label class="chk"><input type="checkbox" data-k="focus_assess"> 評量</label>
+  <p class="note">預設兩者皆關注。若學校本次只看教學，取消勾選「評量」，表單中的評量欄位會自動收起。</p>
+
+  <h3>1.1　學生背景描述</h3>
+  <p class="note">班級人數、學習風格與需求、先備經驗、與所選能力相關的過往表現。觀課老師會據此理解課堂上看到的行為。</p>
+  <textarea data-k="student" rows="4" placeholder="在此輸入……"></textarea>
+
+  <h3>1.2　課程設計</h3>
+  <p class="note">填完這一段，觀課老師應該能說出「這堂課要學生學會什麼、怎麼學」。</p>
+  <p class="field-label">學習目標</p>
+  <textarea data-k="goal" rows="3" placeholder="學生在這堂課結束時，能夠……"></textarea>
+  <p class="field-label">主要教學活動與流程</p>
+  <textarea data-k="flow" rows="5" placeholder="依時間順序：活動 → 學生做什麼 → 教師做什麼"></textarea>
+  <p class="field-label">教學策略與鷹架</p>
+  <textarea data-k="strategy" rows="3" placeholder="提問設計、圖表、示範、分組方式……"></textarea>
+
+  <h3>1.3　對應指標細項</h3>
+  <p class="note">請依授課老師提供的資料，勾選這堂課<strong>刻意要引出</strong>的 1–3 個細項（最多 3 個）；資料沒有明說的，請與授課老師確認。重點是弄清楚「授課老師這樣設計，是為了讓學生表現出哪個面向的行為」，比事後判斷「這堂課算批判還是創造」更有用。展開「層級描述」可看到低、中、高各層學生的樣貌。</p>
+  <div id="picker"></div>
+  <p class="counter" id="pickCount"></p>
+  <div id="dyn1"></div>
+
+  <div class="assess">
+    <h3>1.4　預計使用的評量方式</h3>
+    <p class="note">評量是為了看到「學生的思考表現在哪一層」。請依授課老師提供的資料，記錄預計怎麼蒐集證據。</p>
+    <p class="field-label">評量時機／目的</p>
+    <div style="margin-bottom:10px">
+      <label class="chk"><input type="checkbox" data-k="at_diag"> 課前診斷</label>
+      <label class="chk"><input type="checkbox" data-k="at_form"> 課中形成性評量</label>
+      <label class="chk"><input type="checkbox" data-k="at_summ"> 課後總結性評量</label>
+    </div>
+    <p class="field-label">評量方式（可複選）</p>
+    <div style="margin-bottom:10px">
+      <label class="chk"><input type="checkbox" data-k="am_ask"> 提問／課堂討論</label>
+      <label class="chk"><input type="checkbox" data-k="am_sheet"> 學習單／書面作答</label>
+      <label class="chk"><input type="checkbox" data-k="am_group"> 小組任務／報告</label>
+      <label class="chk"><input type="checkbox" data-k="am_work"> 作品／產出</label>
+      <label class="chk"><input type="checkbox" data-k="am_talk"> 口頭發表</label>
+      <label class="chk"><input type="checkbox" data-k="am_peer"> 同儕互評</label>
+      <label class="chk"><input type="checkbox" data-k="am_self"> 自評／反思</label>
+      <label class="chk"><input type="checkbox" data-k="am_check"> 觀察紀錄／檢核表</label>
+      <label class="chk"><input type="checkbox" data-k="am_test"> 紙筆測驗</label>
+      <label class="chk">其他：<input type="text" data-k="am_other" style="width:12em"></label>
+    </div>
+    <p class="field-label">評量任務說明</p>
+    <textarea data-k="a_task" rows="3" placeholder="學生要完成什麼任務？在課堂哪個時間點進行？"></textarea>
+    <p class="field-label">預期的學習證據與評準</p>
+    <textarea data-k="a_evidence" rows="3" placeholder="學生的什麼表現（發言、作品、作答）能證明達到上面預期的層級？「做到什麼程度算好」如何讓學生知道？"></textarea>
+    <p class="field-label">回饋方式</p>
+    <textarea data-k="a_feedback" rows="2" placeholder="誰給回饋、什麼時候、以什麼形式？"></textarea>
+  </div>
+
+  <!-- ============ II 觀課 ============ -->
+  <div class="sec"><span class="num">II</span><h2>觀課：課堂觀察記錄</h2><span class="who">觀課老師填寫</span></div>
+  <div class="rule"></div>
+  <table class="info"><tbody>
+    <tr><td class="k">觀課老師姓名</td><td class="v"><input type="text" data-k="obsName"></td><td class="k">觀課節次／時間</td><td class="v"><input type="text" data-k="obsTime"></td></tr>
+  </tbody></table>
+
+  <h3>2.1　定焦觀察：說課揭示的指標細項</h3>
+  <p class="note">只針對 I 說課中勾選的細項觀察。寫「看到什麼、聽到什麼」的具體事實（可附時間點、學生原話），先不下評價。觀察層級請對照層級描述判斷。</p>
+  <div id="dyn2"></div>
+
+  <div class="teach">
+    <h3>2.2　課堂整體教學觀察</h3>
+    <p class="note">這四項是支撐學生思考的課堂基礎條件，不對應特定指標。程度：1 = 未觀察到；2 = 部分觀察到；3 = 明確觀察到。</p>
+    <div class="tw"><table class="grid">
+      <thead><tr><th style="width:12%">觀察面向</th><th style="width:30%">關鍵特徵</th><th style="width:9%;text-align:center">1</th><th style="width:9%;text-align:center">2</th><th style="width:9%;text-align:center">3</th><th>證據記錄</th></tr></thead>
+      <tbody id="tbTeach"></tbody>
+    </table></div>
+  </div>
+
+  <div class="assess">
+    <h3>2.3　評量觀察</h3>
+    <p class="note">看課堂中的評量有沒有做到說課所述，以及有沒有蒐集到可以判讀學生思考層級的證據。程度同上。</p>
+    <div class="tw"><table class="grid">
+      <thead><tr><th style="width:12%">觀察面向</th><th style="width:30%">關鍵特徵</th><th style="width:9%;text-align:center">1</th><th style="width:9%;text-align:center">2</th><th style="width:9%;text-align:center">3</th><th>證據記錄</th></tr></thead>
+      <tbody id="tbAssess"></tbody>
+    </table></div>
+    <p class="field-label">課堂中蒐集到的學習證據</p>
+    <textarea data-k="o_evidence" rows="3" placeholder="學生作品、發言、作答內容的具體描述（可註明學生代號）"></textarea>
+  </div>
+
+  <h3>2.4　其他事實紀錄</h3>
+  <p class="note">不在上述細項內、但值得討論的課堂事件。只寫看到、聽到的事實，不貼標籤。</p>
+  <textarea data-k="o_other" rows="3" placeholder="在此輸入……"></textarea>
+
+  <!-- ============ III 議課 ============ -->
+  <div class="sec"><span class="num">III</span><h2>議課：討論與建議</h2><span class="who">授課老師與觀課老師共同填寫</span></div>
+  <div class="rule"></div>
+
+  <h3>3.1　授課老師先說</h3>
+  <p class="note">跟說課時的設計相比，這堂課哪裡如預期？哪裡不一樣？</p>
+  <textarea data-k="m_teacher" rows="3" placeholder="在此輸入……"></textarea>
+
+  <h3>3.2　各指標細項：還可以怎麼調整</h3>
+  <p class="note">畫面會列出「說課預期層級」與「觀察到的層級」，並帶出<strong>下一層的層級描述</strong>。以那段描述為方向，討論課程、提問或任務可以怎麼調整。</p>
+  <div id="dyn3"></div>
+
+  <div class="assess">
+    <h3>3.3　評量設計的討論</h3>
+    <p class="note">這個評量能不能讓學生表現出所選的面向？看到的證據足以判斷層級嗎？評準學生清楚嗎？</p>
+    <p class="field-label">評量設計可以怎麼調整</p>
+    <textarea data-k="m_assess" rows="4" placeholder="在此輸入……"></textarea>
+  </div>
+
+  <h3>3.4　總結回饋</h3>
+  <p class="field-label">教師改變程度</p>
+  <div style="margin-bottom:12px">
+    <label class="chk"><input type="radio" name="chg" data-k="chg" value="明顯"> 明顯</label>
+    <label class="chk"><input type="radio" name="chg" data-k="chg" value="部分"> 部分</label>
+    <label class="chk"><input type="radio" name="chg" data-k="chg" value="尚未觀察到"> 尚未觀察到</label>
+  </div>
+  <p class="field-label">後續增能需求（首選）</p>
+  <div style="margin-bottom:12px">
+    <label class="chk"><input type="radio" name="need" data-k="need" value="提問技巧"> 提問技巧</label>
+    <label class="chk"><input type="radio" name="need" data-k="need" value="教學設計"> 教學設計</label>
+    <label class="chk"><input type="radio" name="need" data-k="need" value="評量設計"> 評量設計</label>
+  </div>
+  <p class="field-label">給老師的一句話（建議／當前需克服的困難）</p>
+  <textarea data-k="m_word" rows="3" placeholder="在此輸入……"></textarea>
+  <p class="field-label">下一次要調整、下次觀課想再看的細項</p>
+  <textarea data-k="m_next" rows="3" placeholder="授課老師打算先動手調整什麼？下次希望觀課老師看哪個面向？"></textarea>
+
+  <div id="savedNote">內容會自動儲存在本機瀏覽器</div>
+</div>
+
+<script>
+var ASPECTS = [{"id": "CT1.1", "fw": "CT", "no": "1.1", "strand": "範疇 1　建構知識", "name": "找出知識缺口", "gist": "辨別「我還需要知道什麼」，並提出問題去探究", "levels": [{"lv": "低", "text": "學習者能辨識自身對於問題、議題或疑問已知的內容。學習者認知到自身對於不熟悉主題的已知知識是不充分的。學習者能提出數量有限的問題，以獲取在簡單、受限的問題或探究情境中有用的資訊。"}, {"lv": "中", "text": "學習者能辨識自身對於問題、議題或疑問，在已知知識上的一些局限性，這與熟悉和不熟悉的主題皆相關。學習者能針對簡單或熟悉情境中特定的探究目的，辨識並區分相關與較不相關的問題或資訊需求。當針對更複雜或不熟悉的問題或情境進行調查時，學習者能概括地闡明自身已知知識的局限性。學習者能認知到從最相關的領域或觀點範圍內，調查與問題、議題或疑問相關資訊的益處。"}, {"lv": "高", "text": "學習者能辨識為了解決問題、理解議題或回答問題所需的知識，並能準確評估自身知識相對於這些需求的局限性。學習者可以將自身的資訊需求制定為精確的陳述或問題，以利後續的調查研究。學習者能夠考量自身理解中可能存在的誤解，並能認知到從多元來源和觀點獲取資訊的潛在益處。"}]}, {"id": "CT1.2", "fw": "CT", "no": "1.2", "strand": "範疇 1　建構知識", "name": "區辨資訊", "gist": "評估資訊來源可不可靠、區分事實與觀點、判斷證據夠不夠強", "levels": [{"lv": "低", "text": "學習者應用主觀標準來區分資訊來源，例如來源是否熟悉、容易取得，或是否與自身觀點一致。在簡單、熟悉的情境中，學習者能針對特定目的，從不相關的來源中，辨識出相關的資訊來源，以及與其他資訊不一致的資訊，以質疑其用處和可靠性。學習者能區分常識性事實與明顯的觀點陳述。"}, {"lv": "中", "text": "學習者能區分與熟悉和簡單情境相關，較可靠或有用的資訊來源，以及較不可靠或無用的資訊來源。在較不熟悉的情境中，學習者仰賴已建立的、可靠的資訊來源。學習者意識到並應用——可能不加區別或僵化地應用——用於判斷來源的可靠性或有用性的一般標準。學習者能區分事實陳述與觀點陳述，並偏好以事實作為知識的基礎。學習者理解資訊可能帶有偏見、誇大，或可能將觀點錯誤地呈現為事實。"}, {"lv": "高", "text": "學習者能依據自身想要或需要的資訊，應用最相關的標準來評估資訊來源。學習者能準確比較不同資訊作為特定主張證據的強度，並能辨識接受或拒絕資訊的有效理由。學習者可以區分事實資訊與觀點和斷言，並能認知到它們各自的潛在價值。學習者能準確解釋文本和資訊的要素如何產生說服效果。"}]}, {"id": "CT1.3", "fw": "CT", "no": "1.3", "strand": "範疇 1　建構知識", "name": "處理和詮釋資訊", "gist": "把資訊分類整理，找出模式與關聯（包含例外）", "levels": [{"lv": "低", "text": "學習者能正確詮釋簡單數據的呈現方式。學習者能建立關聯性，或辨識單一來源的數據和資訊中明顯的模式。學習者能從在鷹架式任務或具有明顯關聯性的內容情境中呈現的資訊進行推論。學習者能辨識簡單的類別，並將資訊或數據組織成簡單的類別。"}, {"lv": "中", "text": "學習者能從來自不同來源，更複雜的數據和資訊中，辨識準確且有意義的模式和合理的關聯性。學習者能辨識何時新資訊能證實或符合先前的知識。學習者能根據資訊中已辨識的模式，形成簡化的概括。學習者能認知到數據或資訊不符合已辨識的模式或概念類別。"}, {"lv": "高", "text": "學習者能辨識邏輯模式，以及來自不同來源的數據和資訊內部及彼此之間細微或複雜的關聯性。學習者能找到符合邏輯且實用的方式，有概念地組織來自不同來源的資訊。學習者能將新的、可能互相衝突的資訊，與自身先前的理解連結和整合。學習者能根據資訊中的模式，形成合理的概括或假設。學習者能認知並考量不符合已辨識模式或概念類別的數據或資訊的重要性。"}]}, {"id": "CT2.1", "fw": "CT", "no": "2.1", "strand": "範疇 2　評估觀點", "name": "應用邏輯", "gist": "用推論、因果、矛盾與一致性判斷結論成不成立", "levels": [{"lv": "低", "text": "學習者能在處理熟悉的情境和資訊時，透過簡單的演繹和推論得出結論。學習者也能辨識並解釋簡單的演繹論證或結論是否健全。學習者能發展出基本策略，以解決目標簡單且變數有限的問題。"}, {"lv": "中", "text": "學習者能辨識有效的論證，即使這些論證可能不健全。學習者能解釋為何一個簡單的論證，並未從其前提合乎邏輯地推導而出。學習者能從一系列主張中，辨識出明顯的隱含結論。學習者能做出並解釋用於找出簡單問題正確解答的邏輯演繹。在受限的情境中，學習者能應用因果關係、矛盾和一致性的概念，來評估證據互相衝突的情境。"}, {"lv": "高", "text": "學習者能運用演繹推理來區分有效的結論與無效的結論，即使在那些看似合理的論證中亦然。學習者運用邏輯來辨識論證中細微、不明言或非預期的結論，即使這些結論可能存在問題。學習者能運用演繹推理，針對複雜且多面向的問題，得出正確的解決方案。學習者能區分相關性與因果關係，並應用因果關係、矛盾和一致性等關鍵概念，來評估論證的強度和邏輯性。學習者運用既有知識和邏輯推理來分析複雜情境，即使在資訊可能缺失或矛盾的情況下亦然。學習者能為觀察到的現象產生替代解釋，並運用邏輯來預測假設情境中可能的結果。"}]}, {"id": "CT2.2", "fw": "CT", "no": "2.2", "strand": "範疇 2　評估觀點", "name": "辨識假設和動機", "gist": "看出論證背後沒說出口的假設、偏見或動機", "levels": [{"lv": "低", "text": "學習者能辨識支撐直率的主張或論證的假設。當他人的推理或行動反映出明顯的（例如直接物質上的）自身利益或考量時，學習者能認知到這些動機背後的原因——或將這些動機理解為偏見。"}, {"lv": "中", "text": "學習者能辨識支撐主張的合理或常識性假設。在簡單的論證中，學習者能認知到有缺陷的假設或隱藏的前提，並批判基於這些假設或前提的結論。當他人的動機或推理反映出較不明顯的（例如間接有利的）自身利益或考量時，學習者能辨識出其中的偏見。"}, {"lv": "高", "text": "學習者能辨識在處理不熟悉情境的論證中，會使結論失效的假設。學習者能從一系列主張中，辨識出較不明顯的隱含結論。學習者能在必要時刻意運用假設，以推進論證或解決問題的活動。學習者能辨識自身動機何時會導致論證中產生偏見，並能辨識他人的細微動機（例如意識形態／身分認同相關的動機）可能構成的潛在偏見。"}]}, {"id": "CT2.3", "fw": "CT", "no": "2.3", "strand": "範疇 2　評估觀點", "name": "為論證辯護", "gist": "用證據與理由把自己的立場說清楚，並回應反駁", "levels": [{"lv": "低", "text": "學習者能在處理熟悉的、具體的情境時，運用健全但基礎的推理來建構簡單的論證。學習者能以經驗證據和歸納來支持論證，以得出合理的簡單結論。在更抽象的情境中，學習者可能會使用循環邏輯來闡述論證。"}, {"lv": "中", "text": "學習者能辨識支持論證的一些理由或證據，並能針對某個主張，以一些理由和解釋，發展出結構化的贊成或反對論證。學習者能反思並解釋自身對所做主張的推理。學習者能預期對自身論證的反駁意見。"}, {"lv": "高", "text": "學習者能辨識支持論證的多個理由或證據範例。學習者能針對某個主張——或相互競爭的主張——建構清晰且合乎邏輯的論證，並佐以解釋和佐證。學習者能透過考量潛在的弱點和多種反向觀點，來預期對自身論證的反對意見和駁斥，並提出反駁以強化自身論證。"}]}, {"id": "CT3.1", "fw": "CT", "no": "3.1", "strand": "範疇 3　做決定", "name": "辨認做決定的準則", "gist": "釐清「什麼樣的結果算好」，訂出判斷的標準", "levels": [{"lv": "低", "text": "學習者能產出一個簡單的標準，以作為支持決策的理由。學習者能從一系列提供的標準中，辨識出適用於制定決策的標準。"}, {"lv": "中", "text": "學習者能在簡單的問題情境中，辨識出多個用於做出決定的標準。學習者能區分對於決策制定有用的資訊，以及無用的資訊。學習者能為自身選擇最重要的標準提出合理的理由。"}, {"lv": "高", "text": "學習者能從一系列可能相互競爭的類別中，辨識出多個用於制定決策的標準。學習者能根據標準對於達成期望結果的相對重要性，排列標準的優先順序。"}]}, {"id": "CT3.2", "fw": "CT", "no": "3.2", "strand": "範疇 3　做決定", "name": "評估選項", "gist": "依標準比較各選項的優點與限制", "levels": [{"lv": "低", "text": "學習者能根據單一既有標準，將選項從最佳到最差依序排列。學習者能選擇滿足已辨識標準的合適解決方案。學習者能辨識一個解決方案看似合理、概括性的優點和／或局限性。"}, {"lv": "中", "text": "學習者能根據不同的標準評估一系列選項，並辨識哪些選項最能滿足每個標準。學習者能辨識是否有任何標準未被現有選項充分滿足。學習者能辨識解決方案選項的具體優點和局限性。"}, {"lv": "高", "text": "學習者能根據一整套完整的標準來評估每個選項。學習者能根據多個標準排除選項。學習者能比較各選項的優缺點，以判斷哪個選項最有可能實現最佳結果並滿足已排序的標準。"}]}, {"id": "CT3.3", "fw": "CT", "no": "3.3", "strand": "範疇 3　做決定", "name": "測試與監控執行", "gist": "檢視決定實際產生的結果，並據此調整", "levels": [{"lv": "低", "text": "學習者能從數據或觀察中，正確地辨識出是否已達成期望的結果。"}, {"lv": "中", "text": "學習者運用數據的觀察分析來解釋一項決策是否以及如何導向期望的結果。針對熟悉、受限的情境，學習者能區分合適與較不合適的決策回饋來源。學習者能辨識質疑結果的合理理由，並為未達成期望結果提出合理的解釋。"}, {"lv": "高", "text": "學習者能辨識相關且有效，可用於評估決策結果的問題。學習者應用公正且合理的決策成功衡量標準來評估決策。學習者能區分哪些結果（包含正面和負面）是決策的計畫性執行所導致，哪些結果是由其他因素引起。學習者能辨識為改善結果所需的變更或調整。"}]}, {"id": "CR1.1", "fw": "CR", "no": "1.1", "strand": "範疇 1　產生想法", "name": "產生大量想法", "gist": "流暢度：面對開放任務，能提出的想法數量", "levels": [{"lv": "低", "text": "學習者在簡單的腦力激盪/構思任務中，產出的想法數量有限（例如最多3或4個）。"}, {"lv": "中", "text": "學習者在簡單的腦力激盪/構思任務中，能提出一些想法（例如最多6或7個）。面對情境或條件中等複雜程度的問題，學習者可以產生一到兩個想法。"}, {"lv": "高", "text": "學習者在簡單的腦力激盪/構思任務中，能提出許多想法（例如8個或更多）。面對情境或條件中等複雜程度的問題，學習者可以產生三個或更多想法。"}]}, {"id": "CR1.2", "fw": "CR", "no": "1.2", "strand": "範疇 1　產生想法", "name": "產生一系列想法", "gist": "變通性：想法涵蓋不同類別，而不是同一種的變化", "levels": [{"lv": "低", "text": "學習者針對簡單的腦力激盪/構思任務提出的想法，主要屬於同一類別。"}, {"lv": "中", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，這些回應相較於想法總數，僅展現出小範圍的想法。"}, {"lv": "高", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，這些回應在想法數量相對有限的情況下，想法的範疇仍相當廣泛。"}, {"lv": "非常高", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，其回應在想法總數相對較少的情況下，仍代表極高範圍的想法（不同類別的獨特想法數量）。"}]}, {"id": "CR2.1", "fw": "CR", "no": "2.1", "strand": "範疇 2　試行想法", "name": "轉變視角與邊界", "gist": "換個角度、重新定義任務邊界（「假設……會怎樣？」）", "levels": [{"lv": "低", "text": "學習者在為任務或問題發展想法/解決方案時，主要採取單一視角。經提示後，學習者可以在想法產生過程中做出可預測的視角轉變。學習者主要在給定或假設的任務、問題或挑戰的概念邊界內工作。"}, {"lv": "中", "text": "學習者展現一定程度的可能性思考，例如，能從一系列不同的角度思考任務或挑戰。學習者能彈性思考如何將簡單物體的特性用於非傳統用途。學習者會做出適度的努力，以突破任務的界限來容納新穎的想法。"}, {"lv": "高", "text": "學習者展現實驗意願，願意花時間從意想不到的觀點探索問題、重新定義問題邊界，並質疑為何某些解決方案不可行。學習者會考慮替代途徑或可能性，即使是那些看似不太可能的途徑。"}, {"lv": "非常高", "text": "學習者以令人驚訝或意想不到的方式，重新框架想法、問題、物體和解決方案，以帶來對可能性新的詮釋。"}]}, {"id": "CR2.2", "fw": "CR", "no": "2.2", "strand": "範疇 2　試行想法", "name": "調整並運用想法", "gist": "改編、結合或類比既有想法，產生新的可能", "levels": [{"lv": "低", "text": "學習者在嘗試發展新想法或解決方案時，對任務要素的操控有限，主要著重於表面的改編，或結合少量看似明顯相關的想法。"}, {"lv": "中", "text": "學習者展現一些實驗的跡象，他們結合和綜合一些想法或元素，包括那些看似不明顯相關的想法或元素。"}, {"lv": "高", "text": "學習者能彈性思考，操控任務的要素以解決問題。學習者有效地增加或結合任務的要素以找到解決方案，或結合概念以產生新的可能性和不同的任務思考方式。"}]}, {"id": "CR3.1", "fw": "CR", "no": "3.1", "strand": "範疇 3　評估想法品質", "name": "確保有效性", "gist": "想法能符合任務目的與條件，真的行得通", "levels": [{"lv": "低", "text": "學習者針對條件有限的簡單情境和問題，發展出實用且適切的解決方案或想法。"}, {"lv": "中", "text": "學習者針對情境或條件中等複雜程度的問題，產生的想法務實且可能有效。"}, {"lv": "高", "text": "學習者針對中等複雜程度的挑戰，發展出的想法能符合多項關於實用性或適切性的標準。"}]}, {"id": "CR3.2", "fw": "CR", "no": "3.2", "strand": "範疇 3　評估想法品質", "name": "考量新穎性", "gist": "想法相較同儕的獨特程度", "levels": [{"lv": "低", "text": "學習者針對簡單的情境和任務，相較於同儕團體，提出顯而易見、熟悉或傳統的解決方案或想法。"}, {"lv": "中", "text": "學習者針對簡單的情境和任務，提出的想法在某種程度上較為少見和/或非常規，或包含較不常見的元素。"}, {"lv": "高", "text": "學習者針對中等複雜程度的挑戰，發展出的想法相當非典型，或包含相對於同儕預期而言，獨特程度的細節。"}, {"lv": "非常高", "text": "學習者針對中等複雜程度的挑戰，提出的想法完全不同於明顯的想法或典型的解決方案，或為預期的想法或解決方案添加完全出乎意料的元素。他們將新穎的想法延伸到複雜任務或挑戰的多個面向。"}]}, {"id": "CR3.3", "fw": "CR", "no": "3.3", "strand": "範疇 3　評估想法品質", "name": "闡述想法", "gist": "說明想法如何運作、為什麼有效又有原創性", "levels": [{"lv": "低", "text": "學習者針對想法提供有限的闡述，說明其想法將如何運作或如何有效。"}, {"lv": "中", "text": "學習者針對想法提供闡述，嘗試描述其如何有效/如何運作。"}, {"lv": "高", "text": "學習者針對想法的有效性，呈現詳細的闡述，並佐證其符合目的。"}, {"lv": "非常高", "text": "學習者呈現對想法的實質且完整的闡述，不僅闡述想法的有效性，也闡述想法為何展現一定程度的原創性。"}]}];
+
+(function(){
+  var KEY = 'worksheet:acer-observation:v1';
+  var MAXSEL = 3;
+  var data = {}, savedAt = '', timer = null, flash = null;
+  var root = document.getElementById('root');
+
+  var TEACH_ROWS = [
+    ['提問與引導','老師有提出「開放式問題」或「追問」'],
+    ['鷹架與支持','提供圖表、示範或提示引導思考'],
+    ['學生互動','學生有機會表達觀點、同儕討論／回饋'],
+    ['任務設計','任務具開放性，需運用證據判斷或做決定']
+  ];
+  var ASSESS_ROWS = [
+    ['任務與指標對應','評量任務能讓學生表現出所選指標面向的行為'],
+    ['期待表現透明','學生知道「做到什麼程度算好」（評準、範例或口頭說明）'],
+    ['學習證據','教師蒐集到可判讀的證據（作品、發言、紀錄）'],
+    ['回饋','回饋具體，且指向下一步該怎麼做'],
+    ['回饋到教學','教師依評量所見，即時調整提問、任務或節奏']
+  ];
+  var CORE = {
+    CT:['批判性思考的核心','把立場觀點說清楚：能用證據與理由支持主張，並判斷資訊與論證站不站得住。'],
+    CR:['創造性思考的核心','聚焦解決問題的創意方案：產生多元想法、試著轉換角度，並確保想法既新穎又有效。']
+  };
+  var FWNAME = {CT:'批判性思考',CR:'創造性思考'};
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function controls(){ return Array.prototype.slice.call(root.querySelectorAll('[data-k]')); }
+  function byId(id){ for (var i=0;i<ASPECTS.length;i++) if (ASPECTS[i].id===id) return ASPECTS[i]; }
+  function selected(){ return ASPECTS.filter(function(a){ return data['sel_'+a.id]==='on'; }); }
+  function label(a){ return FWNAME[a.fw]+' 面向'+a.no+' '+a.name; }
+
+  function autosize(el){
+    if (el.tagName === 'TEXTAREA'){ el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
+  }
+
+  /* ---------- static-ish renderers ---------- */
+  function scaleRows(rows, prefix){
+    return rows.map(function(r,i){
+      var k = prefix+i;
+      return '<tr><td><strong>'+esc(r[0])+'</strong></td><td>'+esc(r[1])+'</td>'
+        + [1,2,3].map(function(n){ return '<td class="c"><input type="radio" name="'+k+'" data-k="'+k+'" value="'+n+'"></td>'; }).join('')
+        + '<td><textarea data-k="'+k+'_note" rows="1" placeholder="事實描述"></textarea></td></tr>';
+    }).join('');
+  }
+
+  function levelRows(a, hitLv){
+    return a.levels.map(function(l){
+      return '<div class="lvrow'+(hitLv===l.lv?' hit':'')+'"><span class="t">'+esc(l.lv)+'</span><span>'+esc(l.text)+'</span></div>';
+    }).join('');
+  }
+
+  function renderPicker(){
+    var n = selected().length, out = '';
+    ['CT','CR'].forEach(function(fw){
+      out += '<div class="fw"><h4>'+FWNAME[fw]+'</h4><div class="core"><b>'+CORE[fw][0]+'</b><span>'+CORE[fw][1]+'</span></div>';
+      var last = '';
+      ASPECTS.filter(function(a){ return a.fw===fw; }).forEach(function(a){
+        if (a.strand !== last){ out += '<div class="strand">'+esc(a.strand)+'</div>'; last = a.strand; }
+        var on = data['sel_'+a.id]==='on', off = !on && n>=MAXSEL;
+        out += '<div class="pick'+(off?' off':'')+'"><label><input type="checkbox" data-k="sel_'+a.id+'"'+(off?' disabled':'')+'>'
+          + '<span class="nm">面向'+a.no+' '+esc(a.name)+'</span><span class="gs">'+esc(a.gist)+'</span></label>'
+          + '<details class="lv"><summary>層級描述</summary>'+levelRows(a)+'</details></div>';
+      });
+      out += '</div>';
+    });
+    $('picker').innerHTML = out;
+    $('pickCount').textContent = '已選 '+n+' ／ '+MAXSEL+' 個細項';
+  }
+
+  function levelOptions(a, extra){
+    var o = '<option value="">請選擇</option>';
+    a.levels.forEach(function(l){ o += '<option value="'+l.lv+'">'+l.lv+'</option>'; });
+    if (extra) o += '<option value="'+extra+'">'+extra+'</option>';
+    return o;
+  }
+
+  var EMPTY = '<div class="empty">尚未選擇指標細項。請先回到「I　說課」的 1.3 勾選 1–3 個細項，這裡會自動帶出對應的欄位。</div>';
+
+  function renderDyn1(){
+    var s = selected();
+    $('dyn1').innerHTML = s.map(function(a){
+      return '<div class="card"><div class="hd"><h4>'+esc(label(a))+'</h4><span class="tag">'+esc(a.strand)+'</span></div>'
+        + '<p class="field-label">授課老師在課程中怎麼設計，來引出這個面向？</p>'
+        + '<textarea data-k="d_'+a.id+'" rows="3" placeholder="哪個活動、哪個提問或任務，會讓學生表現出這個面向的行為？"></textarea>'
+        + '<p class="field-label">授課老師預期學生大多表現在哪一層？（對照層級描述）</p>'
+        + '<select data-k="exp_'+a.id+'">'+levelOptions(a)+'</select><div style="height:14px"></div></div>';
+    }).join('');
+  }
+
+  function renderDyn2(){
+    var s = selected();
+    if (!s.length){ $('dyn2').innerHTML = EMPTY; return; }
+    $('dyn2').innerHTML = s.map(function(a){
+      var exp = data['exp_'+a.id];
+      return '<div class="card"><div class="hd"><h4>'+esc(label(a))+'</h4><span class="tag">'+esc(a.strand)+'</span>'
+        + (exp?'<span class="sm">說課預期層級：'+esc(exp)+'</span>':'')+'</div>'
+        + '<p class="sm" style="margin:0 0 6px">'+esc(a.gist)+'</p>'
+        + '<details class="lv" style="margin-left:0"><summary>層級描述（對照用）</summary>'+levelRows(a, data['obs_'+a.id])+'</details>'
+        + '<div class="two" style="margin-top:10px"><div><p class="field-label">教師做了什麼（引導、提問、鷹架）</p>'
+        + '<textarea data-k="ot_'+a.id+'" rows="3" placeholder="具體行為，可附時間點"></textarea></div>'
+        + '<div><p class="field-label">學生表現出什麼（發言、作品、互動）</p>'
+        + '<textarea data-k="os_'+a.id+'" rows="3" placeholder="具體行為，可附學生原話"></textarea></div></div>'
+        + '<p class="field-label">依證據判斷，學生大多表現在哪一層？</p>'
+        + '<select data-k="obs_'+a.id+'">'+levelOptions(a,'未觀察到')+'</select><div style="height:14px"></div></div>';
+    }).join('');
+  }
+
+  function nextLevel(a, lv){
+    for (var i=0;i<a.levels.length;i++) if (a.levels[i].lv===lv) return a.levels[i+1] || null;
+    return null;
+  }
+
+  function renderDyn3(){
+    var s = selected();
+    if (!s.length){ $('dyn3').innerHTML = EMPTY; return; }
+    $('dyn3').innerHTML = s.map(function(a){
+      var exp = data['exp_'+a.id] || '', obs = data['obs_'+a.id] || '';
+      var left, right;
+      left = '<div class="h">預期層級 vs. 觀察層級</div>說課預期：<strong>'+(exp||'未填')+'</strong>；觀察到：<strong>'+(obs||'II 尚未填')+'</strong>';
+      if (obs && obs!=='未觀察到'){
+        var nx = nextLevel(a, obs);
+        right = nx
+          ? '<div class="h">下一層（'+esc(nx.lv)+'）的描述：調整的方向</div>'+esc(nx.text)
+          : '<div class="h">已是此面向最高層級描述</div>可以討論怎麼放到更複雜或不同的情境，加深挑戰。';
+      } else if (obs==='未觀察到'){
+        right = '<div class="h">未觀察到</div>先討論：說課設計的活動與這個面向之間，哪裡沒有接上？';
+      } else {
+        right = '<div class="h">下一層描述</div>請先在「II　觀課」選擇觀察到的層級，這裡會帶出下一層的描述。';
+      }
+      return '<div class="card"><div class="hd"><h4>'+esc(label(a))+'</h4><span class="tag">'+esc(a.strand)+'</span></div>'
+        + '<div class="cmp"><div>'+left+'</div><div>'+right+'</div></div>'
+        + '<details class="lv" style="margin-left:0"><summary>完整層級描述</summary>'+levelRows(a, obs)+'</details>'
+        + '<div class="two" style="margin-top:10px"><div><p class="field-label">教學上可以怎麼調整</p>'
+        + '<textarea data-k="mt_'+a.id+'" rows="3" placeholder="提問、任務、鷹架或活動安排的具體調整"></textarea></div>'
+        + '<div class="assess"><p class="field-label">評量上可以怎麼調整</p>'
+        + '<textarea data-k="ma_'+a.id+'" rows="3" placeholder="怎麼蒐集或回饋，才能看見學生下一層的表現"></textarea></div></div></div>';
+    }).join('');
+  }
+
+  function renderAll(){
+    $('tbTeach').innerHTML = scaleRows(TEACH_ROWS,'st');
+    $('tbAssess').innerHTML = scaleRows(ASSESS_ROWS,'sa');
+    renderPicker(); renderDyn1(); renderDyn2(); renderDyn3();
+  }
+
+  function toggleFocus(){
+    var t = data.focus_teach==='on', a = data.focus_assess==='on';
+    Array.prototype.forEach.call(root.querySelectorAll('.teach'), function(e){ e.classList.toggle('hide', !t); });
+    Array.prototype.forEach.call(root.querySelectorAll('.assess'), function(e){ e.classList.toggle('hide', !a); });
+  }
+
+  function apply(){
+    controls().forEach(function(el){
+      var v = data[el.dataset.k];
+      if (el.type==='checkbox') el.checked = v==='on';
+      else if (el.type==='radio') el.checked = (v!=null && v===el.value);
+      else if (v != null && el.value !== v) el.value = v;
+      autosize(el);
+    });
+    toggleFocus();
+  }
+
+  function defaults(){
+    if (data.focus_teach==null) data.focus_teach = 'on';
+    if (data.focus_assess==null) data.focus_assess = 'on';
+  }
+
+  var canStore = (function(){
+    try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return true; }
+    catch(e){ return false; }
+  })();
+
+  function save(){
+    if (!canStore){
+      $('saveStatus').textContent = '此瀏覽器未開放自動儲存';
+      $('savedNote').textContent = '此瀏覽器未開放自動儲存，請在關閉前按「匯出備份」保留檔案';
+      return;
+    }
+    var stamp = new Date().toLocaleString('zh-TW', {hour12:false});
+    try{
+      localStorage.setItem(KEY, JSON.stringify({fields:data, savedAt:stamp}));
+      savedAt = stamp;
+      $('saveStatus').textContent = '已儲存 ✓';
+      $('savedNote').textContent = '最後儲存於 ' + stamp + '（存於本機瀏覽器）';
+      clearTimeout(flash);
+      flash = setTimeout(function(){ $('saveStatus').textContent = ''; }, 2500);
+    }catch(e){
+      $('saveStatus').textContent = '儲存失敗（空間不足），請按「匯出備份」';
+    }
+  }
+
+  function onEdit(e){
+    var el = e.target;
+    if (!el || !el.dataset || !el.dataset.k) return;
+    var k = el.dataset.k;
+    if (el.type==='checkbox') data[k] = el.checked ? 'on' : '';
+    else if (el.type==='radio'){ if (!el.checked) return; data[k] = el.value; }
+    else data[k] = el.value;
+    autosize(el);
+    if (k.indexOf('focus_')===0) toggleFocus();
+    if (e.type==='change'){
+      if (k.indexOf('sel_')===0){ renderPicker(); renderDyn1(); renderDyn2(); renderDyn3(); apply(); }
+      else if (k.indexOf('obs_')===0 || k.indexOf('exp_')===0){ renderDyn3(); if (k.indexOf('exp_')===0) renderDyn2(); apply(); }
+    }
+    $('saveStatus').textContent = '編輯中…';
+    clearTimeout(timer);
+    timer = setTimeout(save, 500);
+  }
+
+  function openAllDetails(open){
+    Array.prototype.forEach.call(root.querySelectorAll('details'), function(d){
+      if (open){ d.dataset.was = d.open ? '1' : '0'; d.open = true; }
+      else if (d.dataset.was!=null){ d.open = d.dataset.was==='1'; }
+    });
+  }
+
+  window.onExport = function(){
+    var name = ((data.school||'').trim() + '_' + (data.teacher||'').trim()).replace(/^_|_$/g,'') || '觀課議課單';
+    var blob = new Blob([JSON.stringify({fields:data, savedAt:savedAt}, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '_觀課議課單.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  };
+
+  window.onImport = function(){
+    var input = document.createElement('input');
+    input.type = 'file'; input.accept = '.json,application/json';
+    input.onchange = function(){
+      var f = input.files && input.files[0];
+      if (!f) return;
+      var r = new FileReader();
+      r.onload = function(){
+        try{
+          var parsed = JSON.parse(r.result);
+          data = parsed.fields || parsed || {};
+          defaults(); renderAll(); apply(); save();
+        }catch(e){ $('saveStatus').textContent = '匯入失敗：檔案格式不符'; }
+      };
+      r.readAsText(f);
+    };
+    input.click();
+  };
+
+  window.onClear = function(){
+    if (!window.confirm('確定清空所有已填內容？建議先「匯出備份」。')) return;
+    data = {}; defaults();
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    savedAt = '';
+    renderAll();
+    controls().forEach(function(el){ if (el.type!=='checkbox' && el.type!=='radio') el.value=''; });
+    apply();
+    $('saveStatus').textContent = '已清空';
+    $('savedNote').textContent = '內容會自動儲存在本機瀏覽器';
+  };
+
+  window.onPrint = function(){ controls().forEach(autosize); window.print(); };
+  window.addEventListener('beforeprint', function(){ openAllDetails(true); controls().forEach(autosize); });
+  window.addEventListener('afterprint', function(){ openAllDetails(false); });
+
+  window.addEventListener('beforeunload', function(e){
+    if (!canStore && Object.keys(data).length > 2){ e.preventDefault(); e.returnValue = ''; }
+  });
+
+  try{
+    var raw = localStorage.getItem(KEY);
+    if (raw){
+      var parsed = JSON.parse(raw);
+      data = parsed.fields || {};
+      savedAt = parsed.savedAt || '';
+      if (savedAt) $('savedNote').textContent = '最後儲存於 ' + savedAt + '（存於本機瀏覽器）';
+    }
+  }catch(e){ data = {}; }
+  defaults();
+
+  root.addEventListener('input', onEdit);
+  root.addEventListener('change', onEdit);
+  renderAll();
+  apply();
+  [60, 300, 900].forEach(function(t){ setTimeout(function(){ controls().forEach(autosize); }, t); });
+})();
+</script>
+</body>
+</html>
