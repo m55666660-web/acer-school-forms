@@ -115,11 +115,14 @@ details.lv summary{cursor:pointer;color:var(--color-accent-700);font-size:11.5px
   .flow,.steps,.two,.cmp{grid-template-columns:1fr}
   .pick label{flex-wrap:wrap}
 }
+.pm{display:none}
 @media print{
   body{background:#fff}
   #toolbar,#savedNote{display:none !important}
   #root{max-width:none;padding:0}
   textarea,input,select{border-color:#bbb !important;color:#000 !important;overflow:hidden !important}
+  .pm-src{display:none !important}
+  .pm{display:block;width:100%;border:1px solid #bbb;border-radius:2px;color:#000;font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}
   .card,.core{page-break-inside:avoid}
   tr{page-break-inside:avoid}
   .sec{page-break-after:avoid}
@@ -585,9 +588,36 @@ var ASPECTS = [{"id": "CT1.1", "fw": "CT", "no": "1.1", "strand": "範疇 1　�
     $('savedNote').textContent = '內容會自動儲存在本機瀏覽器';
   };
 
+  /* 列印時：文字框高度是在螢幕版面算的，列印換行位置不同就會切字。
+     改成用會依內容撐開的 div 取代文字框，印完再還原。 */
+  function clearPrintMirrors(){
+    Array.prototype.forEach.call(root.querySelectorAll('.pm'), function(m){ m.parentNode.removeChild(m); });
+    Array.prototype.forEach.call(root.querySelectorAll('.pm-src'), function(el){ el.classList.remove('pm-src'); });
+  }
+  function makePrintMirrors(){
+    clearPrintMirrors();
+    controls().forEach(function(el){
+      var isTa = el.tagName === 'TEXTAREA';
+      var isTx = el.tagName === 'INPUT' && el.type === 'text' && el.closest('td');
+      if (!isTa && !isTx) return;
+      var cs = window.getComputedStyle(el);
+      var m = document.createElement('div');
+      m.className = 'pm';
+      m.textContent = el.value;
+      m.style.padding = cs.padding;
+      m.style.margin = cs.margin;
+      if (isTa){
+        m.style.lineHeight = cs.lineHeight;
+        var minH = Math.max((el.rows || 1) * parseFloat(cs.lineHeight) + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 2, parseFloat(cs.minHeight) || 0);
+        m.style.minHeight = minH + 'px';
+      }
+      el.classList.add('pm-src');
+      el.parentNode.insertBefore(m, el);
+    });
+  }
   window.onPrint = function(){ controls().forEach(autosize); window.print(); };
-  window.addEventListener('beforeprint', function(){ openAllDetails(true); controls().forEach(autosize); });
-  window.addEventListener('afterprint', function(){ openAllDetails(false); });
+  window.addEventListener('beforeprint', function(){ openAllDetails(true); controls().forEach(autosize); makePrintMirrors(); });
+  window.addEventListener('afterprint', function(){ openAllDetails(false); clearPrintMirrors(); });
 
   window.addEventListener('beforeunload', function(e){
     if (!canStore && Object.keys(data).length > 2){ e.preventDefault(); e.returnValue = ''; }
