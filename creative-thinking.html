@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACER 創造性思考</title>
+<meta name="description" content="ACER 創造性思考技能發展架構：定義、三個範疇與七個面向的白話說明">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf9fa;--text:#1b1b1b;--accent:#c10e0e;--accent-700:#a50d0d;--muted:#6a6768;--divider:#dcd9da;--card:#fff;--soft:#f6eeee}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Serif TC','Songti TC','PMingLiU',serif;line-height:1.8}
+main{max-width:820px;margin:0 auto;padding:40px 16px 80px}
+.hero{text-align:center;margin-bottom:32px;border-bottom:1px solid var(--text);padding-bottom:24px}
+.kicker{font-weight:900;font-size:clamp(14px,2.4vw,18px);letter-spacing:.08em;margin:0 0 4px;color:var(--accent)}
+h1{font-weight:900;font-size:clamp(30px,7vw,52px);line-height:1.2;margin:0 0 8px;letter-spacing:.02em}
+.sub{color:var(--muted);margin:0}
+h2{font-weight:900;font-size:clamp(22px,4.5vw,30px);margin:48px 0 14px;line-height:1.35}
+h2 .no{color:var(--accent);margin-right:.4em}
+p{margin:0 0 14px}
+.def{background:var(--card);border:1px solid var(--text);box-shadow:6px 6px 0 var(--accent);padding:22px 22px 14px;margin:8px 0 22px}
+.def .label{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--accent);margin:0 0 6px}
+.def blockquote{margin:0 0 12px;font-size:clamp(17px,2.6vw,20px);font-weight:500;line-height:1.9}
+details.en{margin:0 0 6px;font-size:14px;color:var(--muted)}
+details.en summary{cursor:pointer;color:var(--text);font-weight:600}
+details.en p{margin:8px 0 0;font-style:italic;line-height:1.7}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 8px}
+.key{background:var(--card);border:1px solid var(--divider);padding:14px 16px}
+.key b{display:block;font-weight:900;font-size:17px;margin-bottom:4px}
+.key span{font-size:14.5px;color:#3d3b3c}
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 10px}
+.map .col{border:1px solid var(--text);background:var(--card)}
+.map .head{background:var(--text);color:#fff;padding:10px 12px;font-weight:900;font-size:16px;line-height:1.4}
+.map .head small{display:block;font-weight:400;font-size:12px;opacity:.75;letter-spacing:.04em}
+.map a{display:block;padding:9px 12px;border-top:1px solid var(--divider);color:inherit;text-decoration:none;font-size:15px;line-height:1.5}
+.map a:hover{color:var(--accent);background:var(--soft)}
+.map a em{font-style:normal;color:var(--accent);font-weight:600;margin-right:.35em}
+.strand{margin:36px 0 0}
+.strand-head{border-left:6px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 14px}
+.strand-head h3{margin:0;font-weight:900;font-size:clamp(20px,3.8vw,25px)}
+.strand-head .en{font-size:13px;color:var(--muted);letter-spacing:.04em}
+.strand-head p{margin:6px 0 0;font-size:15.5px;color:#3d3b3c}
+.aspect{background:var(--card);border:1px solid var(--divider);padding:16px 18px;margin:0 0 12px;scroll-margin-top:16px}
+.aspect h4{margin:0 0 2px;font-weight:900;font-size:18px}
+.aspect h4 em{font-style:normal;color:var(--accent);margin-right:.4em}
+.aspect .en{font-size:12.5px;color:var(--muted);margin:0 0 8px;letter-spacing:.03em}
+.aspect .gist{margin:0 0 6px}
+.aspect .look{font-size:14.5px;color:#3d3b3c;background:var(--soft);padding:8px 12px;margin:0 0 8px}
+.aspect .look b{color:var(--accent-700)}
+.aspect details summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--accent-700);padding:4px 0}
+.lv{display:grid;grid-template-columns:3.2em 1fr;gap:4px 10px;margin:8px 0 0;font-size:14.5px;line-height:1.75}
+.lv dt{font-weight:900;text-align:center;border:1px solid var(--text);height:fit-content;padding:0 2px;font-size:13px}
+.lv dd{margin:0 0 8px;color:#2e2c2d}
+ul.tips{padding-left:1.2em;margin:0}
+ul.tips li{margin:0 0 10px}
+.src{margin-top:48px;border-top:1px solid var(--text);padding-top:16px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.src p{margin:0 0 8px}
+.src a{color:var(--accent-700);word-break:break-all}
+.back{display:inline-block;margin-top:6px;font-size:14px;color:var(--accent-700)}
+@media (max-width:620px){
+  .map{grid-template-columns:1fr}
+  .def{padding:18px 16px 10px;box-shadow:4px 4px 0 var(--accent)}
+}
+@media print{
+  .def{box-shadow:none}
+  .aspect details{display:block}
+  .aspect{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <p class="kicker">ACER 基礎學習技能｜技能發展架構</p>
+    <h1>創造性思考</h1>
+    <p class="sub">Creative thinking：ACER 怎麼定義？課堂上看得到什麼？</p>
+  </header>
+
+  <h2><span class="no">01</span>ACER 的定義</h2>
+  <div class="def">
+    <p class="label">ACER 定義（中文翻譯）</p>
+    <blockquote>創造性思考，是產生多種想法、試驗想法，並探索這些想法如何為挑戰帶來新穎且有效的回應、為問題找出解決方案的能力。</blockquote>
+    <details class="en">
+      <summary>看英文原文</summary>
+      <p>“Creative thinking is the capacity to generate many kinds of ideas, experiment with ideas, and explore how they might produce novel and effective responses to challenges and solutions to problems.”</p>
+    </details>
+  </div>
+
+  <p>簡單說：創造性思考不是「天馬行空」，而是<b>有目的地想出好點子</b>——先放開想出很多、很不一樣的想法；再換角度、拆解重組去玩這些想法；最後判斷哪些想法既<b>新穎</b>又<b>有效</b>，並把它說清楚。</p>
+
+  <div class="keys">
+    <div class="key"><b>新穎＋有效，兩個都要</b><span>只是新奇但不能用、或有用但很普通，都不算完整的創造性思考。</span></div>
+    <div class="key"><b>先發散，再收斂</b><span>先大量、多樣地想（產生想法），再試驗與調整，最後才篩選、評估想法品質。</span></div>
+    <div class="key"><b>人人都有的「小 c」創意</b><span>ACER 看的是學生在課堂中的日常創意；新穎是和同儕相比，不必是世界首創。</span></div>
+  </div>
+
+  <h2><span class="no">02</span>架構一覽：3 個範疇、7 個面向</h2>
+  <p>ACER 把創造性思考分成三個<b>範疇</b>（Strand），每個範疇再分成二到三個<b>面向</b>（Aspect）。點選面向可跳到下方說明。</p>
+  <nav class="map" id="map"></nav>
+
+  <div id="strands"></div>
+
+  <h2><span class="no">03</span>技能發展層級怎麼看</h2>
+  <p>每個面向都有「低、中、高」三個<b>技能發展層級</b>，部分面向（1.2、2.1、3.2、3.3）另有「非常高」。層級越高，學生的想法越多元、越能突破既有框架，也越能在<b>較複雜</b>的挑戰中提出既新穎又可行、說明完整的想法。</p>
+  <p>層級是用來看「學生現在在哪、下一步往哪走」的成長觀點，不是給學生貼標籤。上面每個面向都可以展開「看學生表現層級」。</p>
+
+  <h2><span class="no">04</span>放進課堂的小提醒</h2>
+  <ul class="tips">
+    <li><b>一堂課聚焦 1–3 個面向就好。</b>不用七個面向全包，挑出這次活動最想引出的學生行為。</li>
+    <li><b>給開放、沒有標準答案的任務。</b>答案只有一個的題目，學生沒有空間展現創造性思考。</li>
+    <li><b>發想時先不評價。</b>讓學生先求多、求不同，等點子出來了再談可不可行、新不新。</li>
+    <li><b>請學生說明自己的點子。</b>怎麼運作、為什麼有用、跟別人有什麼不同——說得出來，才看得到創意的品質。</li>
+    <li><b>和學科內容綁在一起。</b>例如國文課改寫故事結局、自然課設計實驗、藝術或科技課提出新的設計方案。</li>
+  </ul>
+
+  <footer class="src">
+    <p><b>出處：</b>Heard, J., Ramalingam, D., Scoular, C., Anderson, P., &amp; Duckworth, D. (2025). <i>Creative thinking: Skill development framework</i> (2nd ed.). Australian Council for Educational Research. <a href="https://doi.org/10.37517/978-1-74286-753-3" target="_blank" rel="noopener">https://doi.org/10.37517/978-1-74286-753-3</a></p>
+    <p>架構與層級描述的著作權屬 ACER。中文層級描述引自陳佩英計畫團隊翻譯（2025）；面向白話說明與課堂提醒為本計畫團隊整理，僅供教師研習與教學參考，詳細內容請以 ACER 原文為準。</p>
+    <a class="back" href="critical-thinking.html">→ 另見：ACER 批判性思考</a><br><a class="back" href="./">← 回到央團 ACER 學校表單首頁</a>
+  </footer>
+</main>
+<script>
+var STRANDS = [{"no": 1, "name": "產生想法", "en": "Generating ideas", "desc": "創造性思考的核心是「生出想法」。這個範疇強調發散性思考：面對開放的問題，能看見許多不同的答案，不急著收斂、不太早把看似不可能的點子排除，因此更有機會出現原創或改編的想法。"}, {"no": 2, "name": "想法試驗", "en": "Experimenting with ideas", "desc": "能「玩」想法——不論是既有的還是新想到的。包括刻意從多種（甚至少見的）角度看問題，對任務的邊界與限制保持彈性，並透過遠距聯想、改編與統整等方式形成新想法。"}, {"no": 3, "name": "評估想法品質", "en": "Identifying the quality of ideas", "desc": "創造性思考有目的、有控制，不是天馬行空。這個範疇是收斂性思考：從眾多想法中判斷哪些真的有創意。判斷的兩個準則是有效性與新穎性，而這些常常要把想法說清楚、展開細節之後才看得出來。"}];
+var ASPECTS = [{"no": "1.1", "name": "產生大量想法", "en": "Generates a number of ideas", "desc": "面對開放任務時能想出的想法數量，反映思考的流暢性。想法越多，裡面出現真正有創意點子的機會越大；看似普通的想法，之後也可能被改編或組合成新點子。", "look": "腦力激盪時，學生能持續提出很多點子，而不是想到一兩個就停下來。", "levels": [{"lv": "低", "text": "學習者在簡單的腦力激盪/構思任務中，產出的想法數量有限（例如最多3或4個）。"}, {"lv": "中", "text": "學習者在簡單的腦力激盪/構思任務中，能提出一些想法（例如最多6或7個）。面對情境或條件中等複雜程度的問題，學習者可以產生一到兩個想法。"}, {"lv": "高", "text": "學習者在簡單的腦力激盪/構思任務中，能提出許多想法（例如8個或更多）。面對情境或條件中等複雜程度的問題，學習者可以產生三個或更多想法。"}]}, {"no": "1.2", "name": "產生一系列想法", "en": "Generates a range of ideas", "desc": "能想出「不同類別」的想法，而不是同一種想法的小變化。這代表思考有變通性、不僵化，是更有創造潛力的指標。", "look": "學生的點子分屬不同方向（例如有的從材料、有的從使用者、有的從流程出發）。", "levels": [{"lv": "低", "text": "學習者針對簡單的腦力激盪/構思任務提出的想法，主要屬於同一類別。"}, {"lv": "中", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，這些回應相較於想法總數，僅展現出小範圍的想法。"}, {"lv": "高", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，這些回應在想法數量相對有限的情況下，想法的範疇仍相當廣泛。"}, {"lv": "非常高", "text": "學習者針對簡單的腦力激盪/構思任務產出回應，其回應在想法總數相對較少的情況下，仍代表極高範圍的想法（不同類別的獨特想法數量）。"}]}, {"no": "2.1", "name": "轉變視角與邊界", "en": "Shifts perspective and boundaries", "desc": "刻意轉換觀點、重新界定任務的邊界，用新的、不那麼明顯的方式看問題，也就是常說的「跳出框框思考」。常見表現是提出「如果……會怎樣？」的問題，從別人的角度探索問題，質疑某些解法為什麼不可行。", "look": "學生問「如果不受這個限制呢？」「換成○○的角度會怎麼看？」，把物品用在非傳統用途。", "levels": [{"lv": "低", "text": "學習者在為任務或問題發展想法/解決方案時，主要採取單一視角。經提示後，學習者可以在想法產生過程中做出可預測的視角轉變。學習者主要在給定或假設的任務、問題或挑戰的概念邊界內工作。"}, {"lv": "中", "text": "學習者展現一定程度的可能性思考，例如，能從一系列不同的角度思考任務或挑戰。學習者能彈性思考如何將簡單物體的特性用於非傳統用途。學習者會做出適度的努力，以突破任務的界限來容納新穎的想法。"}, {"lv": "高", "text": "學習者展現實驗意願，願意花時間從意想不到的觀點探索問題、重新定義問題邊界，並質疑為何某些解決方案不可行。學習者會考慮替代途徑或可能性，即使是那些看似不太可能的途徑。"}, {"lv": "非常高", "text": "學習者以令人驚訝或意想不到的方式，重新框架想法、問題、物體和解決方案，以帶來對可能性新的詮釋。"}]}, {"no": "2.2", "name": "調整並操作想法", "en": "Adapts and manipulates ideas", "desc": "創意常來自改編或連結既有想法，而不是全新發明。能把既有想法拆開、重組，或與其他想法結合、統整；把通常不相關的概念或元素組合在一起，或運用隱喻、類比、跨領域轉移來產生新點子。", "look": "學生把兩個看似無關的點子組合起來，或借用其他領域的做法來解決眼前的問題。", "levels": [{"lv": "低", "text": "學習者在嘗試發展新想法或解決方案時，對任務要素的操控有限，主要著重於表面的改編，或結合少量看似明顯相關的想法。"}, {"lv": "中", "text": "學習者展現一些實驗的跡象，他們結合和綜合一些想法或元素，包括那些看似不明顯相關的想法或元素。"}, {"lv": "高", "text": "學習者能彈性思考，操控任務的要素以解決問題。學習者有效地增加或結合任務的要素以找到解決方案，或結合概念以產生新的可能性和不同的任務思考方式。"}]}, {"no": "3.1", "name": "確保有效性", "en": "Ensures effectiveness", "desc": "有創意的想法必須能有效達成任務目的。如果一個點子無法發揮預期的作用，就不算完整展現創造性思考。", "look": "學生檢查自己的點子「真的做得到嗎？有解決問題嗎？」，並依條件修正。", "levels": [{"lv": "低", "text": "學習者針對條件有限的簡單情境和問題，發展出實用且適切的解決方案或想法。"}, {"lv": "中", "text": "學習者針對情境或條件中等複雜程度的問題，產生的想法務實且可能有效。"}, {"lv": "高", "text": "學習者針對中等複雜程度的挑戰，發展出的想法能符合多項關於實用性或適切性的標準。"}]}, {"no": "3.2", "name": "考量新穎性", "en": "Considers novelty", "desc": "有創意的想法通常會挑戰慣常的思考方式，帶點驚喜。新穎性是相對於適當的參照群體來判斷，例如和同班同學比是否少見；即使不是世界上第一次出現，也可以算原創。", "look": "學生的想法和全班大多數人不一樣，或在常見做法上加入出人意料的元素。", "levels": [{"lv": "低", "text": "學習者針對簡單的情境和任務，相較於同儕團體，提出顯而易見、熟悉或傳統的解決方案或想法。"}, {"lv": "中", "text": "學習者針對簡單的情境和任務，提出的想法在某種程度上較為少見和/或非常規，或包含較不常見的元素。"}, {"lv": "高", "text": "學習者針對中等複雜程度的挑戰，發展出的想法相當非典型，或包含相對於同儕預期而言，獨特程度的細節。"}, {"lv": "非常高", "text": "學習者針對中等複雜程度的挑戰，提出的想法完全不同於明顯的想法或典型的解決方案，或為預期的想法或解決方案添加完全出乎意料的元素。他們將新穎的想法延伸到複雜任務或挑戰的多個面向。"}]}, {"no": "3.3", "name": "闡述想法", "en": "Elaborates ideas", "desc": "把想法的細節想清楚，說明它怎麼運作，並充分說明它的潛力與意義；也要能說明為什麼這個想法有創意，讓別人看懂它為何有效或有原創性。", "look": "學生說明「這個設計會怎麼運作、為什麼有用、跟一般做法有什麼不同」。", "levels": [{"lv": "低", "text": "學習者針對想法提供有限的闡述，說明其想法將如何運作或如何有效。"}, {"lv": "中", "text": "學習者針對想法提供闡述，嘗試描述其如何有效/如何運作。"}, {"lv": "高", "text": "學習者針對想法的有效性，呈現詳細的闡述，並佐證其符合目的。"}, {"lv": "非常高", "text": "學習者呈現對想法的實質且完整的闡述，不僅闡述想法的有效性，也闡述想法為何展現一定程度的原創性。"}]}];
+(function(){
+  var map = document.getElementById('map'), box = document.getElementById('strands');
+  STRANDS.forEach(function(s){
+    var col = document.createElement('div'); col.className='col';
+    var h = '<div class="head">範疇 '+s.no+'　'+s.name+'<small>'+s.en+'</small></div>';
+    var sec = '<section class="strand"><div class="strand-head"><h3>範疇 '+s.no+'　'+s.name+'</h3><div class="en">Strand '+s.no+'　'+s.en+'</div><p>'+s.desc+'</p></div>';
+    ASPECTS.filter(function(a){return a.no.charAt(0)===String(s.no);}).forEach(function(a){
+      h += '<a href="#a'+a.no.replace('.','-')+'"><em>'+a.no+'</em>'+a.name+'</a>';
+      var lv = a.levels.map(function(l){return '<dt>'+l.lv+'</dt><dd>'+l.text+'</dd>';}).join('');
+      sec += '<article class="aspect" id="a'+a.no.replace('.','-')+'"><h4><em>'+a.no+'</em>'+a.name+'</h4><p class="en">Aspect '+a.no+'　'+a.en+'</p><p class="gist">'+a.desc+'</p><p class="look"><b>課堂上可能看到：</b>'+a.look+'</p><details><summary>看學生表現層級</summary><dl class="lv">'+lv+'</dl></details></article>';
+    });
+    col.innerHTML = h; map.appendChild(col);
+    box.insertAdjacentHTML('beforeend', sec+'</section>');
+  });
+})();
+</script>
+</body>
+</html>
