@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACER 批判性思考</title>
+<meta name="description" content="ACER 批判性思考技能發展架構：定義、三個範疇與九個面向的白話說明">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf9fa;--text:#1b1b1b;--accent:#c10e0e;--accent-700:#a50d0d;--muted:#6a6768;--divider:#dcd9da;--card:#fff;--soft:#f6eeee}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Serif TC','Songti TC','PMingLiU',serif;line-height:1.8}
+main{max-width:820px;margin:0 auto;padding:40px 16px 80px}
+.hero{text-align:center;margin-bottom:32px;border-bottom:1px solid var(--text);padding-bottom:24px}
+.kicker{font-weight:900;font-size:clamp(14px,2.4vw,18px);letter-spacing:.08em;margin:0 0 4px;color:var(--accent)}
+h1{font-weight:900;font-size:clamp(30px,7vw,52px);line-height:1.2;margin:0 0 8px;letter-spacing:.02em}
+.sub{color:var(--muted);margin:0}
+h2{font-weight:900;font-size:clamp(22px,4.5vw,30px);margin:48px 0 14px;line-height:1.35}
+h2 .no{color:var(--accent);margin-right:.4em}
+p{margin:0 0 14px}
+.def{background:var(--card);border:1px solid var(--text);box-shadow:6px 6px 0 var(--accent);padding:22px 22px 14px;margin:8px 0 22px}
+.def .label{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--accent);margin:0 0 6px}
+.def blockquote{margin:0 0 12px;font-size:clamp(17px,2.6vw,20px);font-weight:500;line-height:1.9}
+details.en{margin:0 0 6px;font-size:14px;color:var(--muted)}
+details.en summary{cursor:pointer;color:var(--text);font-weight:600}
+details.en p{margin:8px 0 0;font-style:italic;line-height:1.7}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 8px}
+.key{background:var(--card);border:1px solid var(--divider);padding:14px 16px}
+.key b{display:block;font-weight:900;font-size:17px;margin-bottom:4px}
+.key span{font-size:14.5px;color:#3d3b3c}
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 10px}
+.map .col{border:1px solid var(--text);background:var(--card)}
+.map .head{background:var(--text);color:#fff;padding:10px 12px;font-weight:900;font-size:16px;line-height:1.4}
+.map .head small{display:block;font-weight:400;font-size:12px;opacity:.75;letter-spacing:.04em}
+.map a{display:block;padding:9px 12px;border-top:1px solid var(--divider);color:inherit;text-decoration:none;font-size:15px;line-height:1.5}
+.map a:hover{color:var(--accent);background:var(--soft)}
+.map a em{font-style:normal;color:var(--accent);font-weight:600;margin-right:.35em}
+.strand{margin:36px 0 0}
+.strand-head{border-left:6px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 14px}
+.strand-head h3{margin:0;font-weight:900;font-size:clamp(20px,3.8vw,25px)}
+.strand-head .en{font-size:13px;color:var(--muted);letter-spacing:.04em}
+.strand-head p{margin:6px 0 0;font-size:15.5px;color:#3d3b3c}
+.aspect{background:var(--card);border:1px solid var(--divider);padding:16px 18px;margin:0 0 12px;scroll-margin-top:16px}
+.aspect h4{margin:0 0 2px;font-weight:900;font-size:18px}
+.aspect h4 em{font-style:normal;color:var(--accent);margin-right:.4em}
+.aspect .en{font-size:12.5px;color:var(--muted);margin:0 0 8px;letter-spacing:.03em}
+.aspect .gist{margin:0 0 6px}
+.aspect .look{font-size:14.5px;color:#3d3b3c;background:var(--soft);padding:8px 12px;margin:0 0 8px}
+.aspect .look b{color:var(--accent-700)}
+.aspect details summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--accent-700);padding:4px 0}
+.lv{display:grid;grid-template-columns:3.2em 1fr;gap:4px 10px;margin:8px 0 0;font-size:14.5px;line-height:1.75}
+.lv dt{font-weight:900;text-align:center;border:1px solid var(--text);height:fit-content;padding:0 2px;font-size:13px}
+.lv dd{margin:0 0 8px;color:#2e2c2d}
+ul.tips{padding-left:1.2em;margin:0}
+ul.tips li{margin:0 0 10px}
+.src{margin-top:48px;border-top:1px solid var(--text);padding-top:16px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.src p{margin:0 0 8px}
+.src a{color:var(--accent-700);word-break:break-all}
+.back{display:inline-block;margin-top:6px;font-size:14px;color:var(--accent-700)}
+@media (max-width:620px){
+  .map{grid-template-columns:1fr}
+  .def{padding:18px 16px 10px;box-shadow:4px 4px 0 var(--accent)}
+}
+@media print{
+  .def{box-shadow:none}
+  .aspect details{display:block}
+  .aspect{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <p class="kicker">ACER 基礎學習技能｜技能發展架構</p>
+    <h1>批判性思考</h1>
+    <p class="sub">Critical thinking：ACER 怎麼定義？課堂上看得到什麼？</p>
+  </header>
+
+  <h2><span class="no">01</span>ACER 的定義</h2>
+  <div class="def">
+    <p class="label">ACER 定義（中文翻譯）</p>
+    <blockquote>批判性思考，是分析和解釋資訊、想法與情境，並依據適當的準則加以評估，藉此建構合理且有洞見的新知識、理解、假設與信念。批判性思考也包含處理與統整資訊，並審慎運用這些資訊，以做出有根據的決定、有效解決問題。</blockquote>
+    <details class="en">
+      <summary>看英文原文</summary>
+      <p>“To think critically is to analyse and interpret information, ideas and situations, and evaluate them according to appropriate criteria for the purpose of constructing sound and insightful new knowledge, understandings, hypotheses and beliefs. Critical thinking encompasses an ability to process and synthesise information and apply it judiciously for informed decision making and effective problem-solving.”</p>
+    </details>
+  </div>
+
+  <p>簡單說：批判性思考不是「挑毛病」，而是<b>帶著目的去想清楚</b>——弄清楚自己知道什麼、還缺什麼；判斷資訊和說法站不站得住；最後依據準則做出決定，並檢查決定的效果。</p>
+
+  <div class="keys">
+    <div class="key"><b>有目的、有方向</b><span>在學習情境中，批判性思考是為了解決某個問題或達成某個目標而用，不是為想而想。</span></div>
+    <div class="key"><b>可以教、可以看見</b><span>ACER 把它拆成學生「做得出來、看得到」的行為，老師可以針對特定面向教學與評量。</span></div>
+    <div class="key"><b>跨領域通用，但要在學科裡教</b><span>三個範疇適用各學習領域，但教學與評量一定要放在具體的學科內容與情境中。</span></div>
+  </div>
+
+  <h2><span class="no">02</span>架構一覽：3 個範疇、9 個面向</h2>
+  <p>ACER 把批判性思考分成三個<b>範疇</b>（Strand），每個範疇再分成三個<b>面向</b>（Aspect）。點選面向可跳到下方說明。</p>
+  <nav class="map" id="map"></nav>
+
+  <div id="strands"></div>
+
+  <h2><span class="no">03</span>技能發展層級怎麼看</h2>
+  <p>每個面向都有「低、中、高」三個<b>技能發展層級</b>，描述學生在不同程度時的樣貌。層級越高，學生越能處理<b>較複雜、較不熟悉</b>的情境，判斷也越精準、越能考量多元觀點。</p>
+  <p>層級是用來看「學生現在在哪、下一步往哪走」的成長觀點，不是給學生貼標籤。上面每個面向都可以展開「看學生表現層級」。</p>
+
+  <h2><span class="no">04</span>放進課堂的小提醒</h2>
+  <ul class="tips">
+    <li><b>一堂課聚焦 1–3 個面向就好。</b>不用九個面向全包，挑出這次活動最想引出的學生行為。</li>
+    <li><b>設計「需要想清楚」的任務。</b>開放、有不同說法或有取捨的問題，學生才有機會展現批判性思考。</li>
+    <li><b>讓思考被看見。</b>請學生說出或寫下理由、證據、準則，老師才能對照層級描述判斷學生表現。</li>
+    <li><b>和學科內容綁在一起。</b>例如自然課評估實驗證據、社會課辨識新聞立場、數學課檢驗推理是否成立。</li>
+  </ul>
+
+  <footer class="src">
+    <p><b>出處：</b>Heard, J., Scoular, C., Duckworth, D., Ramalingam, D., &amp; Teo, I. (2025). <i>Critical thinking: Skill development framework</i> (2nd ed.). Australian Council for Educational Research. <a href="https://doi.org/10.37517/978-1-74286-752-6" target="_blank" rel="noopener">https://doi.org/10.37517/978-1-74286-752-6</a></p>
+    <p>架構與層級描述的著作權屬 ACER。中文層級描述引自陳佩英計畫團隊翻譯（2025）；面向白話說明與課堂提醒為本計畫團隊整理，僅供教師研習與教學參考，詳細內容請以 ACER 原文為準。</p>
+    <a class="back" href="./">← 回到央團 ACER 學校表單首頁</a>
+  </footer>
+</main>
+<script>
+var STRANDS = [{"no": 1, "name": "建構知識", "en": "Constructing knowledge", "desc": "對資訊進行反思與評估，正確理解它：弄清楚自己知道什麼、還需要知道什麼；哪些資訊合理、有用、可靠；以及怎麼組織和解釋資訊，從中得出有說服力的意義。"}, {"no": 2, "name": "評估想法", "en": "Evaluating ideas", "desc": "分析並判斷概念與主張是否真實、有力、有效、相關且一致。對象包含論證、理論、證明，也包含流程規則、圖表、行銷或政治宣傳；同時要看出背後的假設與偏見，並確保自己的論證站得住。"}, {"no": 3, "name": "做決定", "en": "Making decisions", "desc": "考量情境、選項與可能結果，做出能帶來最佳結果的選擇，並準確、公正地追蹤決定的效果。它和問題解決相關，但重點在分析與評估，而不是發想新點子（那屬於創造性思考）。"}];
+var ASPECTS = [{"no": "1.1", "name": "辨識知識缺口", "en": "Identifies gaps in knowledge", "desc": "分辨要了解一件事或解決一個問題，自己還缺哪些資訊或證據；承認自己可能知道得不夠、甚至有迷思，並提出問題去探究，願意參考不同來源與觀點來補足理解。", "look": "學生說出「我們還不知道……」，或主動提出要查證、要問的問題。", "levels": [{"lv": "低", "text": "學習者能辨識自身對於問題、議題或疑問已知的內容。學習者認知到自身對於不熟悉主題的已知知識是不充分的。學習者能提出數量有限的問題，以獲取在簡單、受限的問題或探究情境中有用的資訊。"}, {"lv": "中", "text": "學習者能辨識自身對於問題、議題或疑問，在已知知識上的一些局限性，這與熟悉和不熟悉的主題皆相關。學習者能針對簡單或熟悉情境中特定的探究目的，辨識並區分相關與較不相關的問題或資訊需求。當針對更複雜或不熟悉的問題或情境進行調查時，學習者能概括地闡明自身已知知識的局限性。學習者能認知到從最相關的領域或觀點範圍內，調查與問題、議題或疑問相關資訊的益處。"}, {"lv": "高", "text": "學習者能辨識為了解決問題、理解議題或回答問題所需的知識，並能準確評估自身知識相對於這些需求的局限性。學習者可以將自身的資訊需求制定為精確的陳述或問題，以利後續的調查研究。學習者能夠考量自身理解中可能存在的誤解，並能認知到從多元來源和觀點獲取資訊的潛在益處。"}]}, {"no": "1.2", "name": "區辨資訊", "en": "Discriminates amongst information", "desc": "評估資訊的時效、可靠性、相關性、作者與完整性；區分事實和意見，判斷證據對主張的支持有多強，以及資訊對自己的目的是否真的有用。", "look": "學生比較兩個來源哪個比較可信，或指出「這是作者的看法，不是事實」。", "levels": [{"lv": "低", "text": "學習者應用主觀標準來區分資訊來源，例如來源是否熟悉、容易取得，或是否與自身觀點一致。在簡單、熟悉的情境中，學習者能針對特定目的，從不相關的來源中，辨識出相關的資訊來源，以及與其他資訊不一致的資訊，以質疑其用處和可靠性。學習者能區分常識性事實與明顯的觀點陳述。"}, {"lv": "中", "text": "學習者能區分與熟悉和簡單情境相關，較可靠或有用的資訊來源，以及較不可靠或無用的資訊來源。在較不熟悉的情境中，學習者仰賴已建立的、可靠的資訊來源。學習者意識到並應用——可能不加區別或僵化地應用——用於判斷來源的可靠性或有用性的一般標準。學習者能區分事實陳述與觀點陳述，並偏好以事實作為知識的基礎。學習者理解資訊可能帶有偏見、誇大，或可能將觀點錯誤地呈現為事實。"}, {"lv": "高", "text": "學習者能依據自身想要或需要的資訊，應用最相關的標準來評估資訊來源。學習者能準確比較不同資訊作為特定主張證據的強度，並能辨識接受或拒絕資訊的有效理由。學習者可以區分事實資訊與觀點和斷言，並能認知到它們各自的潛在價值。學習者能準確解釋文本和資訊的要素如何產生說服效果。"}]}, {"no": "1.3", "name": "處理和解釋資訊", "en": "Processes and interprets information", "desc": "把數據、證據、說法、概念等資訊加以整理、分析和分類，找出其中的模式與關聯，形成暫時的通則或解釋，同時留意例外與反例代表的意義。", "look": "學生把資料分類、畫出關係，歸納出規律，並注意到「這筆資料不符合」。", "levels": [{"lv": "低", "text": "學習者能正確詮釋簡單數據的呈現方式。學習者能建立關聯性，或辨識單一來源的數據和資訊中明顯的模式。學習者能從在鷹架式任務或具有明顯關聯性的內容情境中呈現的資訊進行推論。學習者能辨識簡單的類別，並將資訊或數據組織成簡單的類別。"}, {"lv": "中", "text": "學習者能從來自不同來源，更複雜的數據和資訊中，辨識準確且有意義的模式和合理的關聯性。學習者能辨識何時新資訊能證實或符合先前的知識。學習者能根據資訊中已辨識的模式，形成簡化的概括。學習者能認知到數據或資訊不符合已辨識的模式或概念類別。"}, {"lv": "高", "text": "學習者能辨識邏輯模式，以及來自不同來源的數據和資訊內部及彼此之間細微或複雜的關聯性。學習者能找到符合邏輯且實用的方式，有概念地組織來自不同來源的資訊。學習者能將新的、可能互相衝突的資訊，與自身先前的理解連結和整合。學習者能根據資訊中的模式，形成合理的概括或假設。學習者能認知並考量不符合已辨識模式或概念類別的數據或資訊的重要性。"}]}, {"no": "2.1", "name": "應用邏輯", "en": "Applies logic", "desc": "能根據前提、規則、條件推理出正確或有效的結論，運用推論、因果、矛盾與一致性等概念；也能看出推理中的謬誤與漏洞，並預想論證換到不同情境是否還成立。", "look": "學生指出「這兩件事同時發生，不代表一個造成另一個」，或檢查推理有沒有跳步。", "levels": [{"lv": "低", "text": "學習者能在處理熟悉的情境和資訊時，透過簡單的演繹和推論得出結論。學習者也能辨識並解釋簡單的演繹論證或結論是否健全。學習者能發展出基本策略，以解決目標簡單且變數有限的問題。"}, {"lv": "中", "text": "學習者能辨識有效的論證，即使這些論證可能不健全。學習者能解釋為何一個簡單的論證，並未從其前提合乎邏輯地推導而出。學習者能從一系列主張中，辨識出明顯的隱含結論。學習者能做出並解釋用於找出簡單問題正確解答的邏輯演繹。在受限的情境中，學習者能應用因果關係、矛盾和一致性的概念，來評估證據互相衝突的情境。"}, {"lv": "高", "text": "學習者能運用演繹推理來區分有效的結論與無效的結論，即使在那些看似合理的論證中亦然。學習者運用邏輯來辨識論證中細微、不明言或非預期的結論，即使這些結論可能存在問題。學習者能運用演繹推理，針對複雜且多面向的問題，得出正確的解決方案。學習者能區分相關性與因果關係，並應用因果關係、矛盾和一致性等關鍵概念，來評估論證的強度和邏輯性。學習者運用既有知識和邏輯推理來分析複雜情境，即使在資訊可能缺失或矛盾的情況下亦然。學習者能為觀察到的現象產生替代解釋，並運用邏輯來預測假設情境中可能的結果。"}]}, {"no": "2.2", "name": "辨識假設和動機", "en": "Identifies assumptions and motivations", "desc": "找出自己或他人推理中「沒說出口」的部分：結論建立在哪些隱含假設上、這些假設合不合理；並以懷疑的態度看待說法，辨識可能的偏見，以及背後驅動的價值或信念。", "look": "學生問「這個說法預設了什麼？」「說這話的人可能有什麼立場或利益？」", "levels": [{"lv": "低", "text": "學習者能辨識支撐直率的主張或論證的假設。當他人的推理或行動反映出明顯的（例如直接物質上的）自身利益或考量時，學習者能認知到這些動機背後的原因——或將這些動機理解為偏見。"}, {"lv": "中", "text": "學習者能辨識支撐主張的合理或常識性假設。在簡單的論證中，學習者能認知到有缺陷的假設或隱藏的前提，並批判基於這些假設或前提的結論。當他人的動機或推理反映出較不明顯的（例如間接有利的）自身利益或考量時，學習者能辨識出其中的偏見。"}, {"lv": "高", "text": "學習者能辨識在處理不熟悉情境的論證中，會使結論失效的假設。學習者能從一系列主張中，辨識出較不明顯的隱含結論。學習者能在必要時刻意運用假設，以推進論證或解決問題的活動。學習者能辨識自身動機何時會導致論證中產生偏見，並能辨識他人的細微動機（例如意識形態／身分認同相關的動機）可能構成的潛在偏見。"}]}, {"no": "2.3", "name": "為論證辯護", "en": "Justifies arguments", "desc": "提出自己的想法，並用證據和合理推理支持主張、避免自己的偏見；能預測主張帶來的後果、說明推理過程，回應他人的質疑，也承認自己論證的限制。", "look": "學生用「因為……證據是……」說明立場，預想反對意見並提出回應。", "levels": [{"lv": "低", "text": "學習者能在處理熟悉的、具體的情境時，運用健全但基礎的推理來建構簡單的論證。學習者能以經驗證據和歸納來支持論證，以得出合理的簡單結論。在更抽象的情境中，學習者可能會使用循環邏輯來闡述論證。"}, {"lv": "中", "text": "學習者能辨識支持論證的一些理由或證據，並能針對某個主張，以一些理由和解釋，發展出結構化的贊成或反對論證。學習者能反思並解釋自身對所做主張的推理。學習者能預期對自身論證的反駁意見。"}, {"lv": "高", "text": "學習者能辨識支持論證的多個理由或證據範例。學習者能針對某個主張——或相互競爭的主張——建構清晰且合乎邏輯的論證，並佐以解釋和佐證。學習者能透過考量潛在的弱點和多種反向觀點，來預期對自身論證的反對意見和駁斥，並提出反駁以強化自身論證。"}]}, {"no": "3.1", "name": "辨認做決定的準則", "en": "Identifies criteria for decision making", "desc": "先理解要做決定的問題或情境，分析其中的限制與需求，想清楚什麼樣的結果才算理想，從中訂出判斷各種決定好壞的準則。", "look": "學生在選擇前先討論「我們要用什麼標準來比？」，並排出標準的優先順序。", "levels": [{"lv": "低", "text": "學習者能產出一個簡單的標準，以作為支持決策的理由。學習者能從一系列提供的標準中，辨識出適用於制定決策的標準。"}, {"lv": "中", "text": "學習者能在簡單的問題情境中，辨識出多個用於做出決定的標準。學習者能區分對於決策制定有用的資訊，以及無用的資訊。學習者能為自身選擇最重要的標準提出合理的理由。"}, {"lv": "高", "text": "學習者能從一系列可能相互競爭的類別中，辨識出多個用於制定決策的標準。學習者能根據標準對於達成期望結果的相對重要性，排列標準的優先順序。"}]}, {"no": "3.2", "name": "評估選項", "en": "Evaluates options", "desc": "有了準則之後，分析並評估每個可能做法的優點與限制，依準則比較各選項，判斷哪個最可能帶來最佳結果。", "look": "學生用表格比較各方案在不同標準下的表現，說明為什麼淘汰某些選項。", "levels": [{"lv": "低", "text": "學習者能根據單一既有標準，將選項從最佳到最差依序排列。學習者能選擇滿足已辨識標準的合適解決方案。學習者能辨識一個解決方案看似合理、概括性的優點和／或局限性。"}, {"lv": "中", "text": "學習者能根據不同的標準評估一系列選項，並辨識哪些選項最能滿足每個標準。學習者能辨識是否有任何標準未被現有選項充分滿足。學習者能辨識解決方案選項的具體優點和局限性。"}, {"lv": "高", "text": "學習者能根據一整套完整的標準來評估每個選項。學習者能根據多個標準排除選項。學習者能比較各選項的優缺點，以判斷哪個選項最有可能實現最佳結果並滿足已排序的標準。"}]}, {"no": "3.3", "name": "測試與監控執行", "en": "Tests and monitors implementation", "desc": "決定執行後，檢視實際結果是否達到預期，區分哪些結果來自這個決定、哪些來自其他因素，並找出需要調整或改進的地方。", "look": "學生回頭檢查方案成效，說明「沒達到目標的原因可能是……，下次要改……」。", "levels": [{"lv": "低", "text": "學習者能從數據或觀察中，正確地辨識出是否已達成期望的結果。"}, {"lv": "中", "text": "學習者運用數據的觀察分析來解釋一項決策是否以及如何導向期望的結果。針對熟悉、受限的情境，學習者能區分合適與較不合適的決策回饋來源。學習者能辨識質疑結果的合理理由，並為未達成期望結果提出合理的解釋。"}, {"lv": "高", "text": "學習者能辨識相關且有效，可用於評估決策結果的問題。學習者應用公正且合理的決策成功衡量標準來評估決策。學習者能區分哪些結果（包含正面和負面）是決策的計畫性執行所導致，哪些結果是由其他因素引起。學習者能辨識為改善結果所需的變更或調整。"}]}];
+(function(){
+  var map = document.getElementById('map'), box = document.getElementById('strands');
+  STRANDS.forEach(function(s){
+    var col = document.createElement('div'); col.className='col';
+    var h = '<div class="head">範疇 '+s.no+'　'+s.name+'<small>'+s.en+'</small></div>';
+    var sec = '<section class="strand"><div class="strand-head"><h3>範疇 '+s.no+'　'+s.name+'</h3><div class="en">Strand '+s.no+'　'+s.en+'</div><p>'+s.desc+'</p></div>';
+    ASPECTS.filter(function(a){return a.no.charAt(0)===String(s.no);}).forEach(function(a){
+      h += '<a href="#a'+a.no.replace('.','-')+'"><em>'+a.no+'</em>'+a.name+'</a>';
+      var lv = a.levels.map(function(l){return '<dt>'+l.lv+'</dt><dd>'+l.text+'</dd>';}).join('');
+      sec += '<article class="aspect" id="a'+a.no.replace('.','-')+'"><h4><em>'+a.no+'</em>'+a.name+'</h4><p class="en">Aspect '+a.no+'　'+a.en+'</p><p class="gist">'+a.desc+'</p><p class="look"><b>課堂上可能看到：</b>'+a.look+'</p><details><summary>看學生表現層級（低／中／高）</summary><dl class="lv">'+lv+'</dl></details></article>';
+    });
+    col.innerHTML = h; map.appendChild(col);
+    box.insertAdjacentHTML('beforeend', sec+'</section>');
+  });
+})();
+</script>
+</body>
+</html>
